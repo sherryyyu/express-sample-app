@@ -6,4 +6,10 @@ Pipeline run, event listener and route.
 
 1. Since we have not yet added GitHub commit hooks, how did you test your Trigger?
 
+We can use curl to simulate, for example:
+
 curl http://vcs-trigger-sherry-express-sample-app.ibmcloud-roks-8s3d9-8946bbc006b7c6eb0829d088919818bb-0000.hkg02.containers.appdomain.cloud
+
+or 
+
+curl -kvX POST -A "GitHub-Hookshot/github" -H "Content-Type:application/json" -H "X-Github-Event:push" -d @/data/src/github.com/openshift/origin/pkg/build/webhook/github/fixtures/pushevent.json https://10.0.2.15:8443/oapi/v1/namespaces/demo/buildconfigs/centos/webhooks/f-A_pRLVKY5Y6ZfprEyf/github
